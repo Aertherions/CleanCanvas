@@ -1,0 +1,27 @@
+{% extends 'admin/index.html' %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<style>
+    #main {
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+    }
+    #main.vue-ready {
+        opacity: 1;
+    }
+</style>
+{% endblock %}
+
+{% block script %}
+{{ block.super }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        var main = document.getElementById('main');
+        if (main) main.classList.add('vue-ready');
+    }, 100);
+});
+</script>
+{% endblock %}
